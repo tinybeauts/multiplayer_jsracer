@@ -24,6 +24,7 @@ MyGame.update_player_position = function(playerNumber) {
       this.end_game(this.player2_name,this.final_time);
     }
     $('#restart').show();
+    $('#new_players').show();
     
   };
 }
@@ -40,7 +41,10 @@ MyGame.end_game = function(player, time) {
 } 
 
 MyGame.start_race = function() {
+  MyGame.countdown();
   $('#game_stats').remove();
+  $('#restart').hide();
+  $('#new_players').hide();
   this.game_over = false;
   this.current_pos_1 = 1;
   this.current_pos_2 = 1;
@@ -50,6 +54,25 @@ MyGame.start_race = function() {
   $('.race_track li').removeClass('active');
   $('.race_track li:nth-child(1)').addClass('active');
   this.start_time = new Date().getTime();
+}
+
+MyGame.countdown = function() {
+  $('.countdown').show();
+  $('.race_track').hide();
+  var counter = 2;
+  var countdown = setInterval(function() {
+    $('.countdown').text(counter);
+    counter--;
+    // alert(counter);
+    if (counter == -1) {
+      $('.countdown').text('GO!').css('font-size', '15em');
+    }
+    if (counter == -2) {
+      $('.countdown').hide();
+      $('.race_track').show();
+      clearInterval(countdown);
+    }
+  }, 1000)
 }
 
 $(document).ready(function() {
