@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>Welcome to RRRRRRRrrrrracer</h1>
+  <div class="race_track">
+    <ul class="player1" id="<%= @player1_name %>">
+      <li class="active"></li>
+      <% @track_length.times do %>
+        <li> </li>
+      <% end %>
+    </ul>
+    <ul class="player2" id="<%= @player2_name %>">
+      <li class="active"></li>
+      <% @track_length.times do %>
+        <li></li>
+      <% end %>
+    </ul>
+    <button id='restart'>Play Again?</button>
+  </div>
+</div>

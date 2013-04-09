@@ -14,18 +14,39 @@ MyGame.update_player_position = function(playerNumber) {
 
   if (current_pos >= this.track_size){
     this.game_over = true;
-    $('.race_track').append("<h2>Player "+playerNumber+" Wins!</h2>");
-    $('#restart').show();
     this.end_time = new Date().getTime();
+    this.final_time = this.end_time - this.start_time;
+    if (playerNumber == 1) {
+      $('.race_track').append("<h2>"+this.player1_name+" Wins!</h2>");
+      this.end_game(this.player1_name,this.final_time);
+    } else if (playerNumber == 2) {
+      $('.race_track').append("<h2>"+this.player2_name+" Wins!</h2>");
+      this.end_game(this.player2_name,this.final_time);
+    }
+    $('#restart').show();
+    
   };
 }
 
+MyGame.end_game = function(player, time) {
+  $.ajax({
+    url: "/end_game",
+    type: "post",
+    data: {winner: player, time: time},
+    success: function(data){
+      $('.race_track').append(data);
+    }
+  });
+} 
+
 MyGame.start_race = function() {
+  $('#game_stats').remove();
   this.game_over = false;
   this.current_pos_1 = 1;
   this.current_pos_2 = 1;
+  this.player1_name = $('.player1').attr('id');
+  this.player2_name = $('.player2').attr('id');
   this.track_size = $("li").length / 2;
-  console.log(this['track_size'])
   $('.race_track li').removeClass('active');
   $('.race_track li:nth-child(1)').addClass('active');
   this.start_time = new Date().getTime();
@@ -44,6 +65,7 @@ $(document).ready(function() {
 
   $('#restart').on('click', function() {
     MyGame.start_race();
-    $('.race_track h2').html(" ");
+    $('.race_track h2').remove();
+    $(this).hide();
   });
 });

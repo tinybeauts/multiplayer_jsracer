@@ -1,18 +1,9 @@
-<div class="container">
-  <h1>Welcome to RRRRRRRrrrrracer</h1>
-  <div class="race_track">
-    <ul class="player1">
-      <li class="active"></li>
-      <% @track_length.times do %>
-        <li> </li>
-      <% end %>
-    </ul>
-    <ul class="player2">
-      <li class="active"></li>
-      <% @track_length.times do %>
-        <li></li>
-      <% end %>
-    </ul>
-    <button id='restart'>Play Again?</button>
-  </div>
+<div class="new_game">
+  <h1>Start a new game!!</h1>
+  <form name="new_game" action="/game" method="post">
+    <input type="text" name="new_game[player1]" placeholder="Player 1" />
+    <input type="text" name="new_game[player2]" placeholder="Player 2" />
+    <input type="tex" name="new_game[track_length]" placeholder="track size" default="10" />
+    <button type="submit">Start Game!</button>
+  </form>
 </div>
