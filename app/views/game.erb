@@ -2,14 +2,14 @@
   <h1>Start yourrrrrrrrrrrrr engines:</h1>
   <div class="countdown">3</div>
   <div class="race_track">
-    <p><%= @player1_name %>:</p>
+    <p><%= @player1_name %> (Shift):</p>
     <ul class="player1" id="<%= @player1_name %>">
       <li class="active"></li>
       <% @track_length.times do %>
         <li> </li>
       <% end %>
     </ul>
-    <p><%= @player2_name %>:</p>
+    <p><%= @player2_name %> (Return):</p>
     <ul class="player2" id="<%= @player2_name %>">
       <li class="active"></li>
       <% @track_length.times do %>
