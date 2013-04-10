@@ -1,29 +1,20 @@
-
 <script>
-
   track_length = <%= @track_length %>
-
 </script>
-
 
 <div class="container">
   <h1>Start yourrrrrrrrrrrrr engines:</h1>
   <div class="countdown">3</div>
   <div class="race_track">
-    <p><%= @player1_name %> (Shift):</p>
-    <ul class="player1" id="<%= @player1_name %>">
+    <% @game.players.each_with_index do |p, i|%>
+    <p><%= p.name %> <%=i==0?"(Shift):":i==1?"(Return)":i==2?"(Space)":"(6)"%></p>
+    <ul class="player<%=i+1%>" id="<%= p.name %>">
       <li class="active"></li>
       <% (@track_length-1).times do %>
         <li> </li>
       <% end %>
     </ul>
-    <p><%= @player2_name %> (Return):</p>
-    <ul class="player2" id="<%= @player2_name %>">
-      <li class="active"></li>
-      <% (@track_length-1).times do %>
-        <li></li>
-      <% end %>
-    </ul>
+    <% end %>
     <button id='restart'>Play Again?</button>
     <button id='new_players'><a href="/">New Players?</a></button>
   </div>

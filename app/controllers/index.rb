@@ -4,17 +4,22 @@ get '/' do
 end
 
 post '/game' do
-  player1 = Player.create(:name => params[:new_game][:player1])
-  player2 = Player.create(:name => params[:new_game][:player2])
-  @track_length = params[:new_game][:track_length].to_i
-  game = Game.create()
-  game.players << player1
-  game.players << player2
+  @game = Game.create()
 
-  session[:current_game] = game.id
+  players = [
+    params[:new_game][:player1],
+    params[:new_game][:player2],
+    params[:new_game][:player3],
+    params[:new_game][:player4]
+  ].delete_if(&:empty?)
 
-  @player1_name = params[:new_game][:player1]
-  @player2_name = params[:new_game][:player2]
+  players.each do |p|
+    @game.players << Player.create(:name => p)
+  end
+
+  session[:current_game] = @game.id
+  @track_length = params[:track_length].to_i
+
   erb :game
 end
 
