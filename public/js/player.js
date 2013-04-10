@@ -6,7 +6,12 @@ var Player = function(number, name) {
 
 Player.prototype.update_player_position = function() {
   if (Player.has_won) return;
-  this.position++;
+  this.current_time = new Date().getTime();
+  if ((myGame.start_time - this.current_time + 4250) > 0){
+    this.position--;
+  } else {
+    this.position++;
+  }
   $('.player'+this.number+' li').removeClass('active');
   var select = '.player'+this.number+' li:nth-child('+this.position+')';
 
@@ -15,7 +20,7 @@ Player.prototype.update_player_position = function() {
   if (this.position >= track_length){
     Player.has_won = true;
     this.end_time = new Date().getTime();
-    this.final_time = this.end_time - myGame.start_time - 4400;
+    this.final_time = this.end_time - myGame.start_time - 4250;
     
     $('.race_track').append("<h2>"+this.my_name+" Wins!</h2>");
     myGame.end_game(this.my_name, this.final_time);

@@ -16,11 +16,11 @@ MyGame.prototype.start_race = function() {
   $('#game_stats').remove();
   $('#restart').hide();
   $('#new_players').hide();
-  this.game_over = false;
-  player1.position = 1;
-  player2.position = 1;
+  Player.has_won = false;
+  Player.position = 1;
   $('.race_track li').removeClass('active');
   $('.race_track li:nth-child(1)').addClass('active');
+  this.started = false
   this.start_time = new Date().getTime();
 }
 
