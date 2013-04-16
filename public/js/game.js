@@ -31,7 +31,6 @@ MyGame.prototype.countdown = function() {
   var countdown = setInterval(function() {
     $('.countdown').text(counter);
     counter--;
-    // alert(counter);
     if (counter == -1) {
       $('.countdown').text('GO!').css('font-size', '15em');
     }

@@ -1,7 +1,3 @@
-body, html {
-  background-color: ;
-}
-
 div.container {
   width: 600px;
   margin: 20px auto;
@@ -29,6 +25,10 @@ div.new_game input {
 }
 
 div.new_game input:focus {
+  outline: none;
+}
+
+div.new_game button:focus {
   outline: none;
 }
 
@@ -128,4 +128,49 @@ div.game_stat #new_game {
   top: 0px;
   left: 0px;
   border-radius: 0px 0px 5px 0px;
+}
+
+/*select {
+  border-radius: 5px;
+  border: 5px solid #00D0FF;
+  background-color: #00D0FF;
+  color: white;
+  text-decoration: none;
+  outline: none;
+  margin-bottom: 10px;
+  padding: 0px 10px;
+}*/
+
+.multiplayer button[name="more_players"] {
+  padding: 0px 2px;
+}
+
+.multiplayer button[name="less_players"] {
+  padding: 0px 4px;
+}
+
+.multiplayer {
+  padding-bottom: 10px;
+}
+
+ul.number_of_players {
+  padding-left: 0px;
+  width: 30px;
+  display: inline;
+}
+
+ul.number_of_players li {
+  border-radius: 5px;
+  border: 5px solid #1ABC9C;
+  background-color: #1ABC9C;
+  color: white;
+  text-decoration: none;
+  outline: none;
+  margin-bottom: 10px;
+  padding: 0px 5px;
+  display: inline;
+}
+
+::-webkit-input-placeholder {
+  color: #E1E1E1;
 }

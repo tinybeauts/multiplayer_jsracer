@@ -2,16 +2,25 @@
   <h1>Welcome to RRRRRRRrrrrracer</h1>
 
   <form name="new_game" action="/game" method="post">
-    <select>
-      <option value"2">2 Players</option>
-      <option value"3">3 Players</option>
-      <option value"4">4 Players</option>
-    </select>
-    <input type="text" name="new_game[player1]" placeholder="Player 1 (Shift)" />
-    <input type="text" name="new_game[player2]" placeholder="Player 2 (Return)" />
+
+    <div class="multiplayer">
+      Players:
+      <ul class="number_of_players">
+        <li>2</li>
+      </ul>
+      <button name="more_players">+</button>
+      <button name="less_players">-</button>
+    </div>
+
+    <div class="need_2_player_names">
+      <%= session[:error_message] if session[:error_message] %>
+    </div>
+
+    <input type="text" name="new_game[player1]" placeholder="Player 1 (Shift)" >
+    <input type="text" name="new_game[player2]" placeholder="Player 2 (Return)">
     <input type="hidden" class="3p" name="new_game[player3]" placeholder="Player 3 (Space)" />
     <input type="hidden" class="4p" name="new_game[player4]" placeholder="Player 4 (6)" />
-    <input type="text" name="track_length" placeholder="track length" value="10" />
+    <input type="text" name="track_length" placeholder="track length (10)" />
     <button type="submit">Start Game!</button>
   </form>
 </div>

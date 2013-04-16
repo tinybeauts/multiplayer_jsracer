@@ -1,5 +1,5 @@
 get '/' do
-  # Look in app/views/index.erb
+  session[:error_message] = nil
   erb :index
 end
 
@@ -13,14 +13,24 @@ post '/game' do
     params[:new_game][:player4]
   ].delete_if(&:empty?)
 
-  players.each do |p|
-    @game.players << Player.create(:name => p)
+  if players.length >= 2
+    players.each do |p|
+      @game.players << Player.create(:name => p)
+    end
+
+    session[:current_game] = @game.id
+    
+    if params[:track_length] == ""
+      @track_length = 10
+    else
+      @track_length = params[:track_length].to_i
+    end
+
+    erb :game
+  else
+    session[:error_message] = "Add your racer name so you can brag about your speed!"
+    erb :index
   end
-
-  session[:current_game] = @game.id
-  @track_length = params[:track_length].to_i
-
-  erb :game
 end
 
 post "/end_game" do 
