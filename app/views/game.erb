@@ -4,7 +4,7 @@
 
 <div class="container">
   <h1>Start yourrrrrrrrrrrrr engines:</h1>
-  <div class="countdown">3</div>
+  <div class="countdown"></div>
   <div class="race_track">
     <% @game.players.each_with_index do |p, i|%>
     <p><%= p.name %> <%=i==0?"(Shift):":i==1?"(Return)":i==2?"(Space)":"(6)"%></p>

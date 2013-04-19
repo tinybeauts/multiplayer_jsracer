@@ -99,6 +99,7 @@ a#game_stats {
   margin: auto;
   line-height: 800px;
 }
+
 div.game_stat {
   margin: 0 auto;
   margin-top: 200px;
@@ -129,17 +130,6 @@ div.game_stat #new_game {
   left: 0px;
   border-radius: 0px 0px 5px 0px;
 }
-
-/*select {
-  border-radius: 5px;
-  border: 5px solid #00D0FF;
-  background-color: #00D0FF;
-  color: white;
-  text-decoration: none;
-  outline: none;
-  margin-bottom: 10px;
-  padding: 0px 10px;
-}*/
 
 .multiplayer button[name="more_players"] {
   padding: 0px 2px;

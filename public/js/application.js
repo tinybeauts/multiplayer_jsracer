@@ -2,12 +2,12 @@
 $(document).ready(function() {
   myGame = new MyGame;
   
-  makePlayers();
-  // player1 = new Player(1, $('.player1').attr('id'));
-  // player2 = new Player(2, $('.player2').attr('id'));
-  // player3 = new Player(3, $('.player3').attr('id'));
-  // player4 = new Player(4, $('.player4').attr('id'));
-  // myGame.startRace();
+  // makePlayers();
+  player1 = new Player(1, $('.player1').attr('id'));
+  player2 = new Player(2, $('.player2').attr('id'));
+  player3 = new Player(3, $('.player3').attr('id'));
+  player4 = new Player(4, $('.player4').attr('id'));
+  myGame.startRace();
   $(document).on('keyup', function(event) {
     var key = event.which
     if (key == 16) {  
@@ -31,14 +31,13 @@ $(document).ready(function() {
 
 });
 
-var makePlayers = function() {
-  var playerCount = $('.race_track').find('ul');
-  debugger;
+// var makePlayers = function() {
+//   var playerCount = $('.race_track').find('ul');
+//   debugger;
 
-  for (i = 0; i <= players; i++) {
-    player = 'player'+i+1;
-    window[player] = new Player(i+1, players[i].id);
-    debugger;
-  }
+//   for (i = 0; i <= players; i++) {
+//     player = 'player'+i+1;
+//     window[player] = new Player(i+1, players[i].id);
+//   }
 
-}
+// }
