@@ -1,6 +1,6 @@
 var MyGame = function(){};
 
-MyGame.prototype.end_game = function(player, time) {
+MyGame.prototype.endGame = function(player, time) {
   $.ajax({
     url: "/end_game",
     type: "post",
@@ -11,17 +11,17 @@ MyGame.prototype.end_game = function(player, time) {
   });
 } 
 
-MyGame.prototype.start_race = function() {
+MyGame.prototype.startRace = function() {
   myGame.countdown();
   $('#game_stats').remove();
   $('#restart').hide();
   $('#new_players').hide();
-  Player.has_won = false;
+  Player.hasWon = false;
   Player.position = 1;
   $('.race_track li').removeClass('active');
   $('.race_track li:nth-child(1)').addClass('active');
   this.started = false
-  this.start_time = new Date().getTime();
+  this.startTime = new Date().getTime();
 }
 
 MyGame.prototype.countdown = function() {

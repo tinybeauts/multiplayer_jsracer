@@ -1,20 +1,20 @@
 
-var max_players = 4;
-var min_players = 2;
+var maxPlayers = 4;
+var minPlayers = 2;
 
 $(document).ready(function() {
 
-  $('.multiplayer').on('click','button[name="more_players"]', function(e) {
+  $('.multiplayer').on('click','button[name="morePlayers"]', function(e) {
     e.preventDefault();
     var players = $('li').first().text();
-    var new_player_number = (parseInt(players) + 1);
-    if (players < max_players) {
-      $('li').first().text(new_player_number);
-      change_players_input(new_player_number);
+    var newPlayerNumber = (parseInt(players) + 1);
+    if (players < maxPlayers) {
+      $('li').first().text(newPlayerNumber);
+      changePlayersInput(newPlayerNumber);
     }
     var lighter = $('button[name="more_players"]');
     var darker = $('button[name="less_players"]');
-    if (players >= (max_players - 1)) {
+    if (players >= (maxPlayers - 1)) {
       light_blue(lighter, darker);
     } else {
       dark_blue(lighter,darker);
@@ -24,14 +24,14 @@ $(document).ready(function() {
   $('.multiplayer').on('click','button[name="less_players"]', function(e) {
     e.preventDefault();
     var players = $('li').first().text();
-    var new_player_number = (parseInt(players) - 1);
-    if (players > min_players) {
+    var newPlayerNumber = (parseInt(players) - 1);
+    if (players > minPlayers) {
       $('li').first().text(parseInt(players)-1);
-      change_players_input(new_player_number);
+      changePlayersInput(newPlayerNumber);
     }
     var lighter = $('button[name="less_players"]');
     var darker = $('button[name="more_players"]');
-    if (players <= (min_players + 1)) {
+    if (players <= (minPlayers + 1)) {
       light_blue(lighter, darker);
     } else {
       dark_blue(lighter, darker);
@@ -40,7 +40,7 @@ $(document).ready(function() {
 
 });
 
-var change_players_input = function(players) { 
+var changePlayersInput = function(players) { 
   if (players == 2) {
     $('.3p').attr('type','hidden')
     $('.4p').attr('type','hidden')
